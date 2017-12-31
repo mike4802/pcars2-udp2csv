@@ -178,7 +178,6 @@ def initcsv():
 # and insert the first row as the header before entering the main loop
   mytime = datetime.datetime.today().strftime('%Y%m%d_%H%M%S')
   fname = mytime + '.csv'
-  mylist = []
   myfile = open(fname, 'w')
   writer = csv.writer(myfile)
   csvheader = ['time', 'lap', 'track', 'sector', 'speed', 'lft', 'rft', 'lrt', 'rrt', 'lfp', 'rfp', 'lrp', 'rrp' ]
