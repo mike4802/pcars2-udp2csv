@@ -165,12 +165,26 @@ def getdata(buf):
   a = RACE.read_dict(buf)
   b = EXTRAS_WEATHER.read_dict(buf)
   c = []
+  tiretemp = []
+  tirepsi = []
 
   for _ in range(0,56):
     each = RACER_INFO.read_dict(buf)
     c.append(each)
+  
+  # make a list of tire temps/pressures
+    # C to F :     F = C * 1.8 + 32
+  # Bars are recorded * 100, need to get decimal place back into position
+    # Bars to PSI: 1 Bar = 14.5038 PSI
 
-  return(i,a,b,c)
+  for i in range(0,4):
+    temp = format((( (a['tiretemp'][i]) * 1.8 ) + 32 ), '.2f')
+    tiretemp.append(temp)
+    b2p = 14.5038
+    psi =  format((( a['airPressure'][i]) * b2p / 100) , '.2f')
+    tirepsi.append(psi)
+
+  return(i,a,b,c,tiretemp,tirepsi)
 
 
 def initcsv():

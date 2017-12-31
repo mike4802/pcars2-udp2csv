@@ -6,7 +6,7 @@ import packetdef
 
 multicast_port  = 5606
 multicast_group = "224.0.0.1"
-interface_ip    = "a.b.c.d"
+interface_ip    = "10.2.2.104"
 
 # setup the socket
 s = socket(AF_INET, SOCK_DGRAM )
@@ -37,21 +37,20 @@ while 1:
     #  z[1] = RACE
     #  z[2] = EXTRAS_WEATHER
     #  z[3][0] = RACER #1 - me 
+    #  z[4][0-3] = LF,RF,LR,RR tire TEMPS
+    #  z[5][0-3] = LF,RF,LR,RR tire PSI
 
-    # format using :  format(var,'.2f') for 2 dec places
-    # C to F :     F = C * 1.8 + 32
-    LFt = format((( (z[1]['tiretemp'][0]) * 1.8 ) + 32 ), '.2f')
-    RFt = format((( (z[1]['tiretemp'][1]) * 1.8 ) + 32 ), '.2f')
-    LRt = format((( (z[1]['tiretemp'][2]) * 1.8 ) + 32 ), '.2f')
-    RRt = format((( (z[1]['tiretemp'][3]) * 1.8 ) + 32 ), '.2f')
+    # Tire Temps
+    LFt = z[4][0] 
+    RFt = z[4][1] 
+    LRt = z[4][2] 
+    RRt = z[4][3] 
 
-    # Bars are recorded * 100, need to get decimal place back into position
-    # Bars to PSI: 1 Bar = 14.5038 PSI 
-    b2p = 14.5038
-    LFp = format((( z[1]['airPressure'][0]) * b2p / 100) , '.2f') 
-    RFp = format((( z[1]['airPressure'][1]) * b2p / 100) , '.2f') 
-    LRp = format((( z[1]['airPressure'][2]) * b2p / 100) , '.2f') 
-    RRp = format((( z[1]['airPressure'][3]) * b2p / 100) , '.2f') 
+	 # Tire Pressures
+    LFp = z[5][0] 
+    RFp = z[5][1]
+    LRp = z[5][2] 
+    RRp = z[5][3] 
   
 # RACE vars 
     eventremain    = z[1]['eventimeremaining']
