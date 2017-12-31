@@ -26,7 +26,7 @@ while 1:
   
   # check packet type right here and only continue if it's a telemetry packet
   # the 0x3 is isolating the last 2 bits of the 8 bits using a bitwise AND on the last 2 bit slots
-  # for values 1 and 2.  The bits slots for 1 bytes are:  128 64 32 16 8 4 2 1
+  # for values 1 and 2.  The bits slots for 1 byte are:  128 64 32 16 8 4 2 1
   pType = x['seq_packet'] & 0x3
 
   # if yes, then call getdata to parse the packet and store it all in 'z'
