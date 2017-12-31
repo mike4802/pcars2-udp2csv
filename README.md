@@ -21,3 +21,11 @@ After creating the code, running the script and collecting some data, I created 
 
 ## Raw Data
 Including sample CSV captured on 7 lap race at Brands Hatch with an Audi R8. Real track link can be found [HERE](http://www.brandshatch.co.uk/).
+
+## Running the code
+Make sure the binio library is installed, then download both packetdef.py and pcars.py.  Need to change the IP address from a.b.c.d to whatever the IP of the device that will be listening.  I've seen other places where no IP is required, but I couldnt get it to work unless I put that in there for the socket definition.  This is most likely a misunderstanding on my part on how to correctly initialize a socket listener for broadcast UDP traffic.
+
+Finally, run the code:
+```
+# python pcars
+```
