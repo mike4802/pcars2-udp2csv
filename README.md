@@ -17,7 +17,7 @@ There were several goals for this.
 * Improve PC2 skills or car setups using data collected from this scanner
 
 ## Data Visualization
-After creating the code, running the script and collecting some data, I created a Jupyter page to start visualizing my driving.  Some of those charts were just examples I found on SNS website and other places.  Not sure if those will help either.
+After creating the code, running the script and collecting some data, I created a Jupyter page to start visualizing my driving.  Some of those charts were just examples I found on SNS website and other places.  Not sure if those will help either.  Also, I'm continually updating that notebook and that's by design, so I'm just including a snapshot of what you can do with a notebook like that after you get the CSV into a Pandas dataframe.
 
 ## Raw Data
 Including sample CSV captured on 7 lap race at Brands Hatch with an Audi R8. Real track link can be found [HERE](http://www.brandshatch.co.uk/).
