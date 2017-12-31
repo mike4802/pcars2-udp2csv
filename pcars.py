@@ -6,7 +6,7 @@ import packetdef
 
 multicast_port  = 5606
 multicast_group = "224.0.0.1"
-interface_ip    = "10.2.2.104"
+interface_ip    = "a.b.c.d"
 
 # setup the socket
 s = socket(AF_INET, SOCK_DGRAM )
