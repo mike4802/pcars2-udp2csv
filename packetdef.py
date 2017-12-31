@@ -1,4 +1,4 @@
-# packet.py
+# packetdef.py
 # define the binio structures for the UDP packet
 import binio
 import datetime  
