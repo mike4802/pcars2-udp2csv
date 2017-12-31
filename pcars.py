@@ -69,7 +69,7 @@ while 1:
     lap    = z[3][0]['currentLap']
     sector = z[3][0]['sector'] & 0x3
 
-# Format and write new csv row to file for BI analysis
+# Format and write new csv row to file for data viz / analysis
     csvrow = [currentlaptime, lap, track, sector, speedX, LFt, RFt, LRt, RRt, LFp, RFp, LRp, RRp ]
     print csvrow
     csvfile.writerow(csvrow)
