@@ -173,9 +173,9 @@ def getdata(buf):
     c.append(each)
   
   # make a list of tire temps/pressures
-    # C to F :     F = C * 1.8 + 32
+  # C to F :     F = C * 1.8 + 32
   # Bars are recorded * 100, need to get decimal place back into position
-    # Bars to PSI: 1 Bar = 14.5038 PSI
+  # Bars to PSI: 1 Bar = 14.5038 PSI
 
   for i in range(0,4):
     temp = format((( (a['tiretemp'][i]) * 1.8 ) + 32 ), '.2f')
