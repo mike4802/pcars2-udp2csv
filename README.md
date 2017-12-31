@@ -27,5 +27,5 @@ Make sure the binio library is installed, then download both packetdef.py and pc
 
 Finally, run the code:
 ```
-# python pcars
+# python pcars.py
 ```
