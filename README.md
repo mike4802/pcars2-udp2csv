@@ -5,6 +5,10 @@ Ingest UDP stream from Project Cars 2 and write data to CSV file for data visual
 
 Started playing Project Cars 2 in December 2017 and learned about the UDP stream offering.  After studying the fantastic work of [James Remuscat](https://github.com/jamesremuscat) and his github project called [pcars](https://github.com/jamesremuscat/pcars), I decided to write some code.  I didnt fork the repository, but I did use the code in lots of ways and learned a bunch about handling UDP packets and binary operations in Python.  So my personal thanks and gratitude for his work on this technology.
 
+Original UDP packet breakdown found here:
+
+http://forum.projectcarsgame.com/showthread.php?40113-HowTo-Companion-App-UDP-Streaming
+
 ## Caution
 I am not a regular Python programmer.  I will easily win any contest for the nastiest, poor habit and most un-reusable code out there.  So part of this exercise is to see if I can stay interested and motivated enough to try and improve the maturity of what the code should really look like.
 
