@@ -14,7 +14,7 @@ s.bind(("", multicast_port ))
 mreq = inet_aton(multicast_group) + inet_aton(interface_ip)
 s.setsockopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, str(mreq))
 
-# setup the csv file for BI
+# setup the csv file for data viz in jupyter
 csvfile = packetdef.initcsv()
 
 #--------------------------------------------------------------------#
