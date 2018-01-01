@@ -199,7 +199,7 @@ def initcsv():
   fname = mytime + '.csv'
   myfile = open(fname, 'w')
   writer = csv.writer(myfile)
-  csvheader = ['time', 'lap', 'track', 'sector', 'mph', 'gear', 'lft', 'rft', 'lrt', 'rrt', 'lfp', 'rfp', 'lrp', 'rrp' ]
+  csvheader = ['time', 'lap', 'track', 'sector', 'mph', 'gear', 'lft', 'rft', 'lrt', 'rrt', 'lfp', 'rfp', 'lrp', 'rrp', 'lfbt', 'rfbt', 'lrbt', 'rrbt' ]
   writer.writerow(csvheader)
 
 # after CSV file instantiated and primed, return the new csv writer object
