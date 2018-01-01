@@ -167,6 +167,7 @@ def getdata(buf):
   c = []
   tiretemp = []
   tirepsi = []
+  braketemp = []
 
   for _ in range(0,56):
     each = RACER_INFO.read_dict(buf)
@@ -178,13 +179,17 @@ def getdata(buf):
   # Bars to PSI: 1 Bar = 14.5038 PSI
 
   for i in range(0,4):
-    temp = format((( (a['tiretemp'][i]) * 1.8 ) + 32 ), '.2f')
+    temp  = format((( (a['tiretemp'][i]) * 1.8 ) + 32 ), '.2f')
     tiretemp.append(temp)
+
     b2p = 14.5038
-    psi =  format((( a['airPressure'][i]) * b2p / 100) , '.2f')
+    psi  =  format((( a['airPressure'][i]) * b2p / 100) , '.2f')
     tirepsi.append(psi)
 
-  return(i,a,b,c,tiretemp,tirepsi)
+    brake = format((( (a['brakeTempCelsius'][i]) * 1.8 ) + 32 ), '.2f')
+    braketemp.append(brake)
+
+  return(i,a,b,c,tiretemp,tirepsi,braketemp)
 
 
 def initcsv():
@@ -194,7 +199,7 @@ def initcsv():
   fname = mytime + '.csv'
   myfile = open(fname, 'w')
   writer = csv.writer(myfile)
-  csvheader = ['time', 'lap', 'track', 'sector', 'speed', 'lft', 'rft', 'lrt', 'rrt', 'lfp', 'rfp', 'lrp', 'rrp' ]
+  csvheader = ['time', 'lap', 'track', 'sector', 'mph', 'gear', 'lft', 'rft', 'lrt', 'rrt', 'lfp', 'rfp', 'lrp', 'rrp' ]
   writer.writerow(csvheader)
 
 # after CSV file instantiated and primed, return the new csv writer object

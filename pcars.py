@@ -39,6 +39,7 @@ while 1:
     #  z[3][0] = RACER #1 - me 
     #  z[4][0-3] = LF,RF,LR,RR tire TEMPS
     #  z[5][0-3] = LF,RF,LR,RR tire PSI
+    #  z[6][0-3] = LF,RF,LR,RR brake TEMPS
 
     # Tire Temps
     LFt = z[4][0] 
@@ -51,12 +52,20 @@ while 1:
     RFp = z[5][1]
     LRp = z[5][2] 
     RRp = z[5][3] 
+
+    # Brake TEMPS 
+    LFbt = z[6][0] 
+    RFbt = z[6][1]
+    LRbt = z[6][2] 
+    RRbt = z[6][3] 
+   
    
     # RACE vars 
     eventremain    = z[1]['eventimeremaining']
     split          = z[1]['splittime']
     currentlaptime = format(z[1]['currentLaptime'], '.3f')
-    speedX         = format((225*(z[1]['speed']/100)), '.2f')   # 225*(speed/100)
+    mph            = format((225*(z[1]['speed']/100)), '.2f')   # 225*(speed/100) to get MPH
+    gear           = z[1]['gearNumGears'] & 0x0F    # ANDING on far right 4 bits
   
     # EXTRAS_WEATHER vars 
     aird     = z[2]['aeroDamage'] 
@@ -69,6 +78,6 @@ while 1:
     sector = z[3][0]['sector'] & 0x3
 
     # Format and write new csv row to file for data viz / analysis
-    csvrow = [currentlaptime, lap, track, sector, speedX, LFt, RFt, LRt, RRt, LFp, RFp, LRp, RRp ]
+    csvrow = [currentlaptime, lap, track, sector, mph, gear, LFt, RFt, LRt, RRt, LFp, RFp, LRp, RRp, LFbt, RFbt, LRbt, RRbt ]
     print csvrow
     csvfile.writerow(csvrow)
