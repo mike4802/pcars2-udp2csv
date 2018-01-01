@@ -10,7 +10,7 @@ Original UDP packet breakdown found here:
 http://forum.projectcarsgame.com/showthread.php?40113-HowTo-Companion-App-UDP-Streaming
 
 ## Caution
-I am not a regular Python programmer.  I will easily win any contest for the nastiest, poor habit and most un-reusable code out there.  So part of this exercise is to see if I can stay interested and motivated enough to try and improve the maturity of what the code should really look like.
+I am not a regular Python programmer, so part of this exercise is to improve the code over time.
 
 ## Goals
 There were several goals for this.
