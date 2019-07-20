@@ -1,4 +1,5 @@
 from socket import *
+from datetime import datetime
 from io import BytesIO
 import sys
 import binascii
@@ -6,13 +7,14 @@ import packetdef
 
 multicast_port  = 5606
 multicast_group = "224.0.0.1"
-interface_ip    = "a.b.c.d"
+#multicast_group = "10.2.2.255"
+interface_ip    = "10.2.2.104"
 
 # setup the socket
 s = socket(AF_INET, SOCK_DGRAM )
 s.bind(("", multicast_port ))
 mreq = inet_aton(multicast_group) + inet_aton(interface_ip)
-s.setsockopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, str(mreq))
+s.setsockopt(IPPROTO_IP, IP_ADD_MEMBERSHIP, mreq)
 
 # setup the csv file for data viz in jupyter
 csvfile = packetdef.initcsv()
@@ -21,6 +23,7 @@ csvfile = packetdef.initcsv()
 # begin loop to dissect only TELEMETRY packet for my own data viz analysis 
 
 while 1:
+  t = datetime.now().isoformat()
   data = s.recv(1400)
   x = packetdef.HEADER.read_dict(BytesIO(data))
   
@@ -66,6 +69,8 @@ while 1:
     currentlaptime = format(z[1]['currentLaptime'], '.3f')
     mph            = format((225*(z[1]['speed']/100)), '.2f')   # 225*(speed/100) to get MPH
     gear           = z[1]['gearNumGears'] & 0x0F    # ANDING on far right 4 bits
+    fuellevel      = z[1]['fuelLevel'] # looks like a percentage
+    fuelcapacity   = z[1]['fuelCapacity'] ## new
   
     # EXTRAS_WEATHER vars 
     aird     = z[2]['aeroDamage'] 
@@ -77,7 +82,9 @@ while 1:
     lap    = z[3][0]['currentLap']
     sector = z[3][0]['sector'] & 0x3
 
+    time = t  ## time from earlier in the loop
+
     # Format and write new csv row to file for data viz / analysis
-    csvrow = [currentlaptime, lap, track, sector, mph, gear, LFt, RFt, LRt, RRt, LFp, RFp, LRp, RRp, LFbt, RFbt, LRbt, RRbt ]
-    print csvrow
+    csvrow = [time,currentlaptime, lap, track, sector, mph, gear, LFt, RFt, LRt, RRt, LFp, RFp, LRp, RRp, LFbt, RFbt, LRbt, RRbt, fuellevel, fuelcapacity ]
+    print(csvrow)
     csvfile.writerow(csvrow)
